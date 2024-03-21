@@ -1,0 +1,11 @@
+body {
+    background-color:cornsilk;
+}
+
+h1 {
+    background-color: rgb(232, 177, 159);
+    /* 셤문제 - font color가 아니라 color */
+    color:#FAFAFA;
+}
+
+
