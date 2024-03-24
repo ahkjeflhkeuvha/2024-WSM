@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>RES</title>
+    </head>
+    <body>
+        <h1>당신이 생각한 숫자는</h1>
+        <p id="res"></p>
+        <script>
+            let answerArr = window.localStorage.getItem('answerArr')
+            let binaryRes = ""
+
+            console.log(answerArr)
+            for(let i = answerArr.length - 1; i>=0; i--){
+                if(answerArr[i].charAt(0) >= '0' && answerArr[i].charAt(0) <= '9') binaryRes += answerArr[i]
+            }
+
+            let res = parseInt(binaryRes, 2)
+            document.getElementById('res').innerHTML = res
+        </script>
+    </body>
+</html>

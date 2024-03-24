@@ -1,0 +1,49 @@
+    <html>
+        <head>
+            <title>MagicCard</title>
+        </head>
+        <body>
+            <h1>숫자를 생각해주세요</h1>
+            <h3>아래의 카드 뭉치에서 생각한 숫자가 있다면 y 없다면 n를 선택해주세요.</h3>
+            <p id="cards"></p>
+            <button class="ans" value="1">y</button>
+            <button class="ans" value="0">n</button>
+        
+            <script>
+                let answerArr = new Array(0)
+                let answers = document.getElementsByClassName('ans')
+                let k = 1, i = 0
+                updateCards(k)
+                
+                for(let i = 0; i<answers.length; i++){
+                    answers[i].addEventListener('click', function() {
+                        if(this.value == 1) answerArr.push(1)
+                        else answerArr.push(0)
+                        console.log(answerArr)
+                        k *= 2
+                        updateCards(k)
+                        if(k > 31) {
+                            window.localStorage.setItem('answerArr', answerArr)
+                            location.replace('MagicCardRes.html')
+                        }
+                    })
+                }
+    
+                function updateCards(k) {
+                    let cardsText = ""
+                    let cnt = 0
+                    for(let j = 1; j<=31; j++){
+                        if((k & j) == k) {
+                            cardsText += j + " "
+                            cnt++
+                            if(cnt %4 == 0) cardsText += "\n"
+                        }
+                    }
+                    document.getElementById('cards').innerText = cardsText
+                }
+            </script>
+        </body>
+    </html>
+    </body>
+</html>
+
