@@ -1,6 +1,7 @@
     <html>
         <head>
             <title>MagicCard</title>
+            <link rel="stylesheet" href="MagicCard.css">
         </head>
         <body>
             <h1>숫자를 생각해주세요</h1>
@@ -34,7 +35,7 @@
                     let cnt = 0
                     for(let j = 1; j<=31; j++){
                         if((k & j) == k) {
-                            cardsText += j + " "
+                            cardsText += j + "   "
                             cnt++
                             if(cnt %4 == 0) cardsText += "\n"
                         }

@@ -1,0 +1,15 @@
+p {
+    font-size: 40px;
+}
+.container {
+    display: flex;
+}
+.img {
+    margin-left: 200px;
+}
+
+button {
+    background-color: white;
+    padding: 3px 12px;
+    border: 1px solid black;
+}
