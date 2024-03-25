@@ -29,9 +29,9 @@ TAG : 태그 적용
 
 [속성="값"] : 속성의 속성값이 값일 때 적용
 
-선택자:first-child() : 선택자<span style="color:yellow">가</span> 첫 번째 자식
+선택자:first-child : 선택자<span style="color:yellow">가</span> 첫 번째 자식
 선택자:nth-child(N) : 선택자<span style="color:yellow">가</span> n번째 자식 
-선택자:last-child() : 선택자<span style="color:yellow">가</span> 막내 자식
+선택자:last-child : 선택자<span style="color:yellow">가</span> 막내 자식
 
 <hr>
 선택자:hover : 선택자에 커서를 가져가면 그 선택자 선택
