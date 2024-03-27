@@ -1,11 +1,12 @@
 <html>
     <head>
         <title>Comment Page</title>
+        <link rel="stylesheet" href="comment.css">
     </head>
     <body>
         <!-- 입력창, 입력 버튼 -->
 
-        <input id="comment-input" type="text">
+        <input id="comment-input" type="text" placeholder="댓글을 입력해주세요"><br>
         <input id="password" type="text" placeholder="비밀번호를 입력해주세요">
         <button id="upload-button">comment</button>
         <hr>
@@ -31,7 +32,7 @@
                         const imgSrc = imgArr[Math.floor(Math.random() * imgArr.length)]
                         const img = document.createElement('img')
                         const div = document.createElement('div')
-                        const text = document.createElement('spans')
+                        const text = document.createElement('span')
                         const remove = document.createElement('button')
                         const pw = password.value
 
@@ -73,6 +74,10 @@
                 button.addEventListener('click', addComment)
 
                 input.addEventListener('keyup', (e)=>{
+                    if(e.keyCode === 13) addComment()
+                })
+
+                password.addEventListener('keyup', (e)=>{
                     if(e.keyCode === 13) addComment()
                 })
             })
