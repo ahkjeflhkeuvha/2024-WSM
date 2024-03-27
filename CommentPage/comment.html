@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Comment Page</title>
+    </head>
+    <body>
+        <!-- 입력창, 입력 버튼 -->
+
+        <input id="comment-input" type="text">
+        <input id="password" type="text" placeholder="비밀번호를 입력해주세요">
+        <button id="upload-button">comment</button>
+        <hr>
+
+        <div id="comments">
+            
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', ()=>{
+                const imgArr = ["cat1.jpeg", "cat2.jpeg", "cat3.webp", "cat4.jpg", "cat5.jpg", "cat6.jpg"]
+                const password = document.querySelector('#password')
+                const input = document.querySelector('#comment-input')
+                const button = document.querySelector('#upload-button')
+                const comments = document.querySelector('#comments')
+
+                let keyNum = 0
+
+                function addComment(){
+                    if(input.value.trim() === '') alert('댓글을 입력해주세요.')
+                    if(password.value.trim() === '') alert('비밀번호를 입력해주세요.')
+                    else {
+                        const imgSrc = imgArr[Math.floor(Math.random() * imgArr.length)]
+                        const img = document.createElement('img')
+                        const div = document.createElement('div')
+                        const text = document.createElement('spans')
+                        const remove = document.createElement('button')
+                        const pw = password.value
+
+                        const key = keyNum
+                        keyNum++
+
+                        img.src = `${imgSrc}`
+                        img.width = 50
+                        
+
+                        console.log(imgSrc)
+                        div.setAttribute('data-key', key)
+                        div.appendChild(img)
+                        div.appendChild(text)
+                        div.appendChild(remove)
+                        comments.appendChild(div)
+
+                        text.textContent = input.value
+
+                        remove.textContent = 'remove'
+                        remove.addEventListener('click', ()=>{
+                            removeComment(key, pw)
+                        })
+
+                        input.value = ''
+                        password.value = ''
+                    }
+                }
+
+                function removeComment(key, pw){
+                    const checkpw = prompt('비밀번호를 입력해주세요')
+                    if(checkpw == pw) {
+                        const item = document.querySelector(`[data-key="${key}"]`)
+                        comments.removeChild(item)
+                    }
+                    else alert('비밀번호를 확인해 주세요.')
+                }
+
+                button.addEventListener('click', addComment)
+
+                input.addEventListener('keyup', (e)=>{
+                    if(e.keyCode === 13) addComment()
+                })
+            })
+        </script>
+    </body>
+</html>
