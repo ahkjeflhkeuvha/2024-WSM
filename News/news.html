@@ -6,30 +6,42 @@
         <h1>News</h1>
         <hr>
         <div class="catNews">
-            <h3><a href="Comment.html">[카드뉴스] 냥빨? 냥모나이트? 재미있는 고양이 용어에 대해 알아보자</a></h3>
-            <p>고양이는 영역 동물이자 독립적인 성향이 강해  예민하고 스트레스를 받는 일이 많다고 한다. </p><p>이러한 성향 탓인지 고양이의 특징은 셀 수 없이 많은 만큼 고양이 관련한 ...</p>
+            <h3><a href="Comment.html" class="newsUrl">[카드뉴스] 냥빨? 냥모나이트? 재미있는 고양이 용어에 대해 알아보자</a></h3>
+            <p>고양이는 영역 동물이자 독립적인 성향이 강해  예민하고 스트레스를 받는 일이 많다고 한다. 이러한 성향 탓인지 고양이의 특징은 셀 수 없이 많은 만큼 고양이 관련한 ...</p>
         </div>
         <hr>
         <div class="catNews">
             <h3><a href="Comment.html" class="newsUrl">[카드뉴스] 이 얘기 처음 들었어? 재미있는 ‘과자 TMI’</a></h3>
-            <p>이 얘기 처음 들었어? 재미있는 ‘과자 TMI’</p> <p>국내를 넘어 해외에서도 많은 인기를 끌고 있는 대한민국 대표과자 </p><p>이들에 대한 맛있는 ‘썰’ 풀어드릴게요</p>
+            <p>이 얘기 처음 들었어? 재미있는 ‘과자 TMI’국내를 넘어 해외에서도 많은 인기를 끌고 있는 대한민국 대표과자 이들에 대한 맛있는 ‘썰’ 풀어드릴게요</p>
         </div>
         <hr>
         <div class="catNews">
             <h3><a href="Comment.html" class="newsUrl">[우리 말] 재미있는 우리말 유래...어처구니 등</a></h3>
-            <p>재미있는 우리말 유래 10가지를 알아 본다.</p><p>1. < 어처구니 >  궁궐의 전각이나 남대문 같은 문루의 기왓지붕 위에 사람이나 갖가지 기묘한 ...</p>
+            <p>재미있는 우리말 유래 10가지를 알아 본다.1. < 어처구니 >  궁궐의 전각이나 남대문 같은 문루의 기왓지붕 위에 사람이나 갖가지 기묘한 ...</p>
         </div>
         <hr>
         <div class="catNews">
             <h3><a href="Comment.html" class="newsUrl">세상에서 가장 귀여운 도둑이 검거됐다</a></h3>
-            <p>미국의 한 경찰서 내 '장난감 도난 사건'의 귀여운 범인이 밝혀졌다.</p><p>바로 골든 리트리버 의료견 벤 프랭클린이었다. </p><p>장난감 도난 사건에 대해 정리했다.</p>
+            <p>미국의 한 경찰서 내 '장난감 도난 사건'의 귀여운 범인이 밝혀졌다. 바로 골든 리트리버 의료견 벤 프랭클린이었다. 장난감 도난 사건에 대해 정리했다.</p>
         </div>
         <hr>
         <div class="catNews">
             <h3><a href="Comment.html" class="newsUrl">우주: 무중력 상태에서 벌어지는 재밌는 일</a></h3>
-            <p>캐나다의 우주비행사 데이비드 샹자크가 국제우주정거장 무중력 지대에서 작은 퍼포먼스를 펼쳤다. </p><p>보고도 믿기 어려운 장면을 영상에 담아봤다.</p>
+            <p>캐나다의 우주비행사 데이비드 샹자크가 국제우주정거장 무중력 지대에서 작은 퍼포먼스를 펼쳤다. 보고도 믿기 어려운 장면을 영상에 담아봤다.</p>
         </div>
         <script>
+            const news = document.querySelectorAll('.catNews')
+            
+
+            for(let i = 0; i<news.length; i++){
+                news[i].addEventListener('click', ()=>{
+                    const newUrl = document.getElementsByClassName('newsUrl')
+                    const text = document.getElementsByTagName('p')
+
+                    localStorage.setItem('url', newUrl[i].text)
+                    localStorage.setItem('text', text[i].textContent)
+                })
+            }
         </script>
     </body>
 </html>
