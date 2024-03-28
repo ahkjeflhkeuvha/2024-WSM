@@ -2,10 +2,75 @@ body {
     background-color:cornsilk;
 }
 
-h1 {
+h1, h3 {
     background-color: rgb(232, 177, 159);
     /* 셤문제 - font color가 아니라 color */
     color:#FAFAFA;
 }
+
+/*
+h3 {
+    background-color: pink;
+    color: #fafafa;
+}
+*/
+
+h1 ~ h3 {
+    background-color: blueviolet;
+    /* h1과 같은 레벨에 있는 모든 h3*/
+}
+
+h1 + h2,   /*  */
+h3 + h2 {  /* h1과 같은 레벨에 있으면서 바로 아래에 있는 h2*/ 
+    background-color: chartreuse;
+}
+
+li {
+    background-color: chocolate;
+}
+
+ul > li {
+    background-color: aquamarine;
+}
+
+ul > ul > li {
+    background-color: cadetblue;
+}
+
+/* 시험문제.. 출제... */
+li:first-child {
+    font-size: 20pt; 
+}
+
+li:last-child {
+    /* li의 막내 자식 X -> 막내자식인데 li인 애 */
+    font-size: 5pt;
+}
+
+li:nth-child(3){
+    /* li의 3번째 자식 X -> 3번째 자식인데 li */
+    font-size: 5px; 
+}
+
+/* 짝수번째 자식 li*/ 
+li:nth-child(2n){
+    text-decoration: underline;
+}
+
+li:nth-child(even){
+    color: blue;
+}
+/* even == 2n 짝수 */
+
+/* 홀수번째 자식 li */
+li:nth-child(2n - 1){ 
+    font-weight: bold;
+}
+
+li:nth-child(odd){
+    color: red;
+}
+/* odd == 2n - 1 홀수 */
+
 
 
