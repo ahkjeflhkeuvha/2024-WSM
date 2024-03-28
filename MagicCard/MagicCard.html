@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>생각한 숫자가 여기에 있나요?</h1>
+    <p id="cards"></p>
+    <button class="answer" value="1">y</button>
+    <button class="answer" value="0">n</button>
+
+    <script>
+        let answerArr = new Array(0)
+        let answers = document.getElementsByClassName('answer')
+        let k = 1
+        
+        updateCards(k)
+        
+        for(let i = 0; i<answers.length; i++){
+            answers[i].addEventListener('click', ()=>{
+                if(answers[i].value == 1) answerArr.push(1)
+                else answerArr.push(0)
+                console.log(answerArr)
+                k *= 2
+                updateCards(k)
+                if(k > 31) {
+                    window.localStorage.setItem('answerArr', answerArr)
+                    location.replace('MagicCardRes.html')
+                }
+            })
+        }
+        
+        function updateCards(k){
+            let cardText = ""
+            let cnt = 0
+            for(let j = 1; j<=31; j++){
+                if((k&j) == k) {
+                    cardText += j + "\t"
+                    cnt++
+                    if(cnt % 4 == 0) cardText += "\n"
+                }
+
+            }
+            document.getElementById('cards').innerText = cardText
+        }
+    </script>
+</body>
+</html>

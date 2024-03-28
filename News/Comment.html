@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>Comment</title>
+    </head>
+    <body>
+        <h1>Comment</h1>
+        <textarea id="news" cols="80" rows="4"></textarea>
+        <button id="upload">upload</button>
+        <hr>
+        <div id="newsList">
+            
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', ()=>{
+                const news = document.querySelector('#news')
+                const button = document.querySelector('#upload')
+                const newsList = document.querySelector('#newsList')
+
+                function addNews(){
+                    if(news.value.trim() === '') alert('댓글을 입력해주세요.')
+                    else {
+                        const hr = document.createElement('hr')
+                        const div = document.createElement('div')
+                        const text = document.createElement('span')
+                        const h6 = document.createElement('h6')
+                        const butGood = document.createElement('button')
+                        const butBad = document.createElement('button')
+                        let date = new Date()
+                        let numGood = 0, numBad = 0, cntGood = 0, cntBad = 0, cnt = 0
+
+                        text.textContent = news.value
+                        h6.textContent = date.toLocaleString()
+                        butGood.textContent = `Good ${numGood}`
+                        butBad.textContent = `Bad ${numBad}`
+
+                        div.appendChild(text)
+                        div.appendChild(h6)
+                        div.appendChild(butGood)
+                        div.appendChild(butBad)
+                        div.appendChild(hr)
+                        newsList.appendChild(div)
+
+                        news.value = ''
+
+                        butGood.addEventListener('click', ()=>{
+                            if(cnt == 1 && numBad == 1) alert('하나의 공감만 남겨주세요.')
+                            else {
+                                if(cntGood === 1) {
+                                    numGood--
+                                    cntGood--
+                                    cnt--
+                                    butGood.textContent = `Good ${numGood}`
+                                    butGood.style.color = 'black'
+                                    butGood.style.border = '1px solid black'
+                                }
+                                else {
+                                    numGood++
+                                    cntGood++ 
+                                    cnt++
+                                    butGood.textContent = `Good ${numGood}`
+                                    butGood.style.color = 'red'
+                                    butGood.style.border = '1px solid red'
+                                }  
+                            }  
+                        })
+
+                        butBad.addEventListener('click', ()=>{
+                            if(cnt ==  1 && numGood == 1) alert('하나의 공감만 남겨주세요.')
+                            else {
+                                if(cntBad > 0) {
+                                    numBad--
+                                    cntBad--
+                                    cnt--
+                                    butBad.textContent = `Bad ${numBad}`
+                                    butBad.style.color = 'black'
+                                    butBad.style.border = '1px solid black'
+                                }
+                                else {
+                                    numBad++
+                                    cntBad++ 
+                                    cnt++
+                                    butBad.textContent = `Bad ${numBad}`
+                                    butBad.style.color = 'blue'
+                                    butBad.style.border = '1px solid blue'
+                                }
+                            }
+                        })
+                    }
+                }
+
+                button.addEventListener('click', addNews)
+
+                news.addEventListener('keyup', (e)=>{
+                    if(e.keyCode === 13) addNews()
+                })
+
+                function UploadNews(){
+                    localStorage.setItem('UploadingNews', newsArr)
+                    location.replace('news.html')
+                }
+
+            })
+        </script>
+    </body>
+</html>

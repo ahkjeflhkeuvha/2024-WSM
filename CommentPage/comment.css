@@ -1,106 +1,54 @@
 @media (min-width:400px) {
-    @media (max-width: 1280px){
-        body {
-            margin-left: 5%;
-            margin-right: 5%;
-        }
-        
-        input {
-            margin-bottom: 4px;
-            border: 1px solid black;
-            width: 200px;
-            height: 28px;
-        }
-        
-        button {
-            border: 1px solid black;
-            border-radius: 0;
-            background-color: white;
-            transition: all 0.3s ease-in;
-            height: 28px;
-        }
-        
-        button:hover {
-            background-color: rgb(214, 214, 214);
-        }
-        
-        img {
-            border: 2px solid black;
-            border-radius: 100%;
-            width: 50px;
-            height: 50px;
-        }
-        
-        div > div {
-            position: relative;
-            margin-bottom: 2%;
-        }
-        
-        span {
-            position: absolute;
-            left: 15%;
-            top: 25%;
-        }
-        
-        div > button {
-            position: absolute;
-            top: 25%;
-            right: 0%;
-        }
+    body {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    
+    input {
+        margin-bottom: 4px;
+        border: 1px solid black;
+        width: 200px;
+        height: 28px;
+    }
+    
+    button {
+        border: 1px solid black;
+        border-radius: 0;
+        background-color: white;
+        transition: all 0.3s ease-in;
+        height: 28px;
+    }
+    
+    button:hover {
+        background-color: rgb(214, 214, 214);
+    }
+    
+    img {
+        border: 2px solid black;
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+    }
+    
+    div > div {
+        position: relative;
+        margin-bottom: 2%;
+    }
+    
+    span {
+        position: absolute;
+        left: 6%;
+        top: 27%;
+    }
+    
+    div > button {
+        position: absolute;
+        top: 27%;
+        right: 0%;
     }
 }
 
-@media (min-width:600px) {
-    @media (max-width: 1280px){
-        body {
-            margin-left: 5%;
-            margin-right: 5%;
-        }
-        
-        input {
-            margin-bottom: 4px;
-            border: 1px solid black;
-            width: 200px;
-            height: 28px;
-        }
-        
-        button {
-            border: 1px solid black;
-            border-radius: 0;
-            background-color: white;
-            transition: all 0.3s ease-in;
-            height: 28px;
-        }
-        
-        button:hover {
-            background-color: rgb(214, 214, 214);
-        }
-        
-        img {
-            border: 2px solid black;
-            border-radius: 100%;
-            width: 50px;
-            height: 50px;
-        }
-        
-        div > div {
-            position: relative;
-            margin-bottom: 2%;
-        }
-        
-        span {
-            position: absolute;
-            left: 9%;
-            top: 25%;
-        }
-        
-        div > button {
-            position: absolute;
-            top: 25%;
-            right: 0%;
-        }
-    }
-}
+
 
 @media (min-width: 1200px) {
     body {

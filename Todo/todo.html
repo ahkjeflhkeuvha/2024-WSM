@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-LIST</title>
+</head>
+<body>
+    <h1>Todo-List</h1>
+    <input type="text" id="todo-input">
+    <button id="todo-button">add</button>
+    <div id="todo-list">
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const input = document.querySelector('#todo-input')
+            const button = document.querySelector('#todo-button')
+            const list = document.querySelector('#todo-list')
+
+            let DataKey = 0
+
+            function addTodo(){
+                const div = document.createElement('div')
+                const checkbox = document.createElement('input')
+                const texts = document.createElement('span')
+                const remove = document.createElement('button')
+
+                const key = DataKey
+                DataKey++
+
+                div.setAttribute('data-key', key)
+                div.appendChild(checkbox)
+                div.appendChild(texts)
+                div.appendChild(remove)
+                list.appendChild(div)
+
+                checkbox.type = 'checkbox'
+                checkbox.addEventListener('change', (e)=>{
+                    div.style.textDecoration = e.target.checked ? 'line-through' : 'none'
+                })
+
+                texts.textContent = input.value
+                console.log(input.value)
+
+                remove.textContent = 'remove'
+                remove.addEventListener('click', ()=>{
+                    removeTodo(key)
+                })
+
+                input.value = ''
+            }
+
+            function removeTodo(key){
+                const item = document.querySelector(`[data-key="${key}"]`)
+                list.removeChild(item)
+            }
+
+            button.addEventListener('click', addTodo)
+
+            input.addEventListener('keyup', (e)=>{
+                if(e.keyCode === 13) addTodo()
+            })
+        })
+    </script>
+</body>
+</html>
