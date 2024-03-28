@@ -72,5 +72,24 @@ li:nth-child(odd){
 }
 /* odd == 2n - 1 홀수 */
 
+.korea {
+    background-color: gold;
+}
 
+.japan {
+    background-color: silver;
+}
 
+.incheon {
+    background-color: aqua;
+    /* 같은 레벨이지만 뒤에 적혀있기 때문에 나중에 적용 */
+}
+
+#leader {
+    background-color: hotpink;
+    /* id는 어디에 있든 class보다 우선순위가 높아 무조건 적용~ */ 
+}
+
+[type="text"] { /* [속성="값"] */
+    background-color: darkorange;
+}
