@@ -63,3 +63,23 @@ header {
     margin: 20px;
     width: 100%;
 }
+
+.border {
+    border: 1px solid #777777;
+}
+
+.soul > .h6 {
+    margin: 40px 0 0 150px;
+    text-align: center;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+
+footer > p {
+    display: flex;
+    justify-content: space-between;
+}
