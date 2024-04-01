@@ -20,7 +20,7 @@ header {
 }
 
 .header-container > input, img, a {
-    width: 130px;
+    width: 100px;
     margin: 0 30px;
     font-size: 16px;
     color: black;
