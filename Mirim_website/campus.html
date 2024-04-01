@@ -1,10 +1,11 @@
 <html>
     <head>
         <title>MIRIM</title>
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="campus.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1&family=Gowun+Dodum&display=swap" rel="stylesheet">
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3396caa1a6c8ba91906a8bcee13e025f"></script>
     </head>
     <body>
         <header>
@@ -26,10 +27,15 @@
                 </ul>
             </nav>
         </header>
+        <main>
+            <div class="img-container">
+                <img src="img_aerial_view.png" alt="">
+            </div>
 
-        <div class="img-container">
-            <img src="img1.jpg" alt="">
-        </div>
+            <div id="map" style="width:350px;height:350px;"></div>
+
+            </div>
+        </main>
         
         <br><br>
         <hr>
@@ -50,6 +56,15 @@
             </div>
         </footer>
 
-        <script></script>
+        <script>
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = { 
+                center: new window.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+
+// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+            var map = new window.kakao.maps.Map(mapContainer, mapOption); 
+        </script>
     </body>
 </html>
