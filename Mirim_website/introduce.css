@@ -1,0 +1,110 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Gowun Dodum", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: white;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container > input, img, a {
+    width: 130px;
+    margin: 0 30px;
+    font-size: 16px;
+    color: black;
+}    
+
+.header-container > input {
+    border: 0px solid black;
+    border-bottom: 1px solid black;
+    width: 180px;
+    padding: 2px;
+}
+
+.header-container > a { 
+    text-decoration: none;
+    width: 180px;
+    transition-duration: 0.3s;
+}
+
+.header-container > a:hover {
+    color: #008156;
+}
+
+.menu > ul{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #008156;
+    height: 40px;
+}
+.menu > ul > li {
+    list-style-type: none;
+}
+.menu > ul > li > a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    z-index: 0;
+}
+main > .intro1 {
+    margin-top: 200px;
+    display: flex;
+    margin-right: 20px;
+}
+main > .intro1 > img {
+    width: 30%;
+    height: 30%;
+}
+
+.mention1 {
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.border1  {
+    margin-left: -100px;
+    border: 1px solid #008156;
+    z-index: 10;
+}
+.border2  {
+    margin-right: -100px;
+    border: 1px solid #008156;
+    z-index: 10;
+}
+
+main > .intro2 {
+    margin-top: 30px;
+    display: flex;
+    margin-left: 20px;
+}
+
+.mention2 {
+    text-align: right;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+
+main > .intro2 > img {
+    width: 30%;
+    height: 30%;
+    z-index: -5;
+}
