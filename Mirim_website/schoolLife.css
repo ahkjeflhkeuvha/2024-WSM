@@ -105,25 +105,22 @@ header {
     box-sizing:border-box;
     background:#fff;
     box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
-    -webkit-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
-    -moz-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
+
 }
 /*컨텐츠 영역*/
 .popup_box .popup_cont {
-    line-height:1.4rem;
-    font-size:14px; 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .popup_box h5 {
     font-size: 24px;
-    margin-left: 10px;
+    margin: 10px 0 0 10px;
 }
 .popup_box .popup_cont img {
-    height: 200px;
-    width: 200px;
-    margin-top: 48px;
+    height: 100%;
+    width: 100%;
+    margin-top: 40px;
 }
 /*버튼영역*/
 .popup_box .popup_btn { 
