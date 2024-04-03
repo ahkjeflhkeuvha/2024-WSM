@@ -26,8 +26,85 @@
                 </ul>
             </nav>
         </header>
+
+        <br><br><br><br><br><br><br>
         
+        <div class="pop-container">
+            <a onclick="openPop('1')">
+                <div>
+                    <img src="img_1.jpg" alt="">
+                </div>
+                <p>240331 성수동</p>
+            </a>
+            
+            <a onclick="openPop('2')">
+                <div>
+                    <img src="img_2.jpg" alt="">
+                </div>
+                <p>240330 잠실야구장</p>
+            </a>
+    
+            <a onclick="openPop('3')">
+                <div>
+                    <img src="img_3.jpg" alt="">
+                </div>
+                <p>240328 학교</p>
+            </a>
+    
+            <a onclick="openPop('4')">
+                <div>
+                    <img src="img_4.jpg" alt="">
+                </div>
+                <p>240321 BHC</p>
+            </a>
+        </div>
+
+        <div class="pop-container">
+            <a onclick="openPop('5')">
+                <div>
+                    <img src="img_5.jpg" alt="">
+                </div>
+                <p>240321 학교</p>
+            </a>
+    
+            <a onclick="openPop('6')">
+                <div>
+                    <img src="img_6.jpg" alt="">
+                </div>
+                <p>240318 기숙사</p>
+            </a>
+            
+            <a onclick="openPop('7')">
+                <div>
+                    <img src="img_7.jpg" alt="">
+                </div>
+                <p>240319 학교</p>
+            </a>
+    
+            <a onclick="openPop('8')">
+                <div>
+                    <img src="img_8.jpg" alt="">
+                </div>
+                <p>240315 기숙사</p>
+            </a>
+        </div>
+
+        <div class="popup_layer" id="popup_layer" style="display: none;">
+            <div class="popup_box">
+                <!--팝업 컨텐츠 영역-->
+                <h5>History of MIRIM ❤️</h5>
+                <div class="popup_cont">
+                    <img id="show-img" src="" alt="">
+                </div>
+                <!--팝업 버튼 영역-->
+                <div class="popup_btn" style="float: bottom; margin-top:50px">
+                    <a onclick="closePop();">닫기</a>
+                </div>
+            </div>
+        </div>
+
         <br><br>
+
         <hr>
         <footer>
             <div>
@@ -47,6 +124,15 @@
         </footer>
 
         <script>
+            function openPop(n) {
+                document.getElementById("popup_layer").style.display = "block";
+                document.getElementById("show-img").src = `img_${n}.jpg`;     
+            }
+            
+            //팝업 닫기
+            function closePop() {
+                document.getElementById("popup_layer").style.display = "none";
+            }
         </script>
     </body>
 </html>
