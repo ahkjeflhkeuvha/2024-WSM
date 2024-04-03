@@ -139,6 +139,10 @@ header {
 .popup_btn a {
     text-align: center;
 }
+
+.popup_btn a:hover {
+    cursor: pointer;
+}
 /*오버레이 뒷배경*/
 .popup_overlay{
     position:fixed;
