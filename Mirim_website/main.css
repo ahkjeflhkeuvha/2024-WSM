@@ -60,7 +60,7 @@ header {
 }
 
 .img-container > img {
-    margin: 20px;
+    margin: 0;
     width: 100%;
 }
 
