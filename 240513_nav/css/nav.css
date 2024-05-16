@@ -72,3 +72,39 @@ nav {
     align-items: center;
     column-gap: 40px;
 }
+
+
+/* mobile */
+
+@media screen and (max-width: 600px){
+    .nav.container {
+        padding: 0 20px; /* shrink left/right padding */
+    }
+
+    .nav-list {
+        position: absolute; /* nav 공간 안에 있던 아이들을 위치 탈출 */
+        top: var(--nav-height);
+        right: 0;
+        left: 0;
+
+        flex-direction: column;
+        background-color: hsla(200, 100%, 25%, 0.6); /* a는 opacity */
+    }
+
+    .nav-item {
+        padding: 0.5rem 1rem;
+        border-bottom: 2px solid white; /* underline at link */
+        text-align: center;
+        width: 100%; 
+    }
+
+    .nav-link {
+        display: block; /* fit at box content */
+    }
+    .nav-toggle {
+        display: block; /* 햄버거 메뉴 살리기 */
+    }
+
+}
+
+
