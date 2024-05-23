@@ -35,7 +35,7 @@ body {
 }
 
 body > header {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
@@ -87,13 +87,13 @@ nav {
         top: calc(var(--nav-height) - 144px); /* calc(수치 연산자 수치) */
         right: 0;
         left: 0;
+        backdrop-filter: blur(8px); /* 뒷 배경 블러 처리 */
         
-
         z-index: -1; /* z-index는 쌓을 순서를 정해줌 (작으면 뒤로 크면 앞으로) */
         flex-direction: column;
         background-color: hsla(200, 100%, 25%, 0.6); /* a는 opacity */
     }
-
+    
     .nav-item {
         padding: 0.5rem 1rem;
         border-bottom: 2px solid white; /* underline at link */
