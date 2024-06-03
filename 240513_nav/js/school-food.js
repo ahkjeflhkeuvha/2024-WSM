@@ -26,6 +26,9 @@ const displayDate = () => {
 // 급식 정보 날짜 바꾸자~
 const changeDate = (diff) => {
     currentDate.setDate(currentDate.getDate() + diff)
+    
+    if(currentDate.getDay() == 0) currentDate.setDate(currentDate.getDate() - 2)
+    else if(currentDate.getDay() == 6) currentDate.setDate(currentDate.getDate() + 2)
     displayDate()
 
     const dateData = currentDate.toISOString().slice(0, 10).replace(/-/g, "")
@@ -37,45 +40,62 @@ const changeDate = (diff) => {
 // 급식 API 이용해서 급식 정보  
 
 const getSchoolFoodMenu = (dateData) => {
-    let url = `${URL}?Type=json&KEY+${API_KEY}&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=${ATPT_OFCDC_SC_CODE}&SD_SCHUL_CODE=${SD_SCHUL_CODE}&MLSV_YMD=${dateData}`  
-    
+    let url = `${URL}?Type=json&KEY+${API_KEY}&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=${ATPT_OFCDC_SC_CODE}&SD_SCHUL_CODE=${SD_SCHUL_CODE}&MLSV_YMD=${dateData}`
+
     fetch(url) // 비동기로 url 호출
-    .then((res) => res.json()) // 호출이 잘 되었다면 res를 json으로 실제 데이터 만 전달
-    .then((data) => setSchoolFoodMenu(data)) // 위의 json을 전달된 res 출력
-    .catch((error) => console.log(error)) // 만약 위에서 에러가 발생했다면 에러 출력
+        .then((res) => res.json()) // 호출이 잘 되었다면 res를 json으로 실제 데이터 만 전달
+        .then((data) => setSchoolFoodMenu(data)) // 위의 json을 전달된 res 출력
+        .catch((error) => console.log(error)) // 만약 위에서 에러가 발생했다면 에러 출력
 }
 
 // 받아온 급식 정보 웹사이트에 표시하자
 const setSchoolFoodMenu = (data) => {
 
     // breakfastMenuUl 가져오자
-    const breakfastMenuUl = document.getElementsByClassName('menu breakfast')[0]  
+    const breakfastMenuUl = document.getElementsByClassName('menu breakfast')[0]
     // lunchMenuUl 가져오자
     const lunchMenuUl = document.getElementsByClassName('menu lunch')[0]
     // dinnerMenuUl 가져오자
     const dinnerMenuUl = document.getElementsByClassName('menu dinner')[0]
 
+    breakfastMenuUl.innerHTML = "<li> 급식 메뉴를 불러오지 못 했습니다.</li>"
+    lunchMenuUl.innerHTML = "<li> 급식 메뉴를 불러오지 못 했습니다.</li>"
+    dinnerMenuUl.innerHTML = "<li> 급식 메뉴를 불러오지 못 했습니다.</li>"
+
+    
+    if (data["mealServiceDietInfo"] === undefined) return
     const menuData = data["mealServiceDietInfo"][1]["row"]
-    console.log(menuData)
+        // data에서 메뉴를 가져오자(조, 중, 석식)
 
+        menuData.forEach((menuRow) => {
+            // 하나씩 돌면서 clean 작업 -> (...) 없애기, . 없애기, <br /> 태그로 나누기, 빈칸 제거, <li class = "menu-food">에 넣기
 
-    // data에서 메뉴를 가져오자(조, 중, 석식)
-    
-    menuData.forEach((menuRow)=>{
-        // 하나씩 돌면서 clean 작업 -> (...) 없애기, . 없애기, <br /> 태그로 나누기, 빈칸 제거, <li class = "menu-food">에 넣기
-        
-        let cleanedMenu = menuRow.DDISH_NM
-        cleanedMenu = cleanedMenu.replace(/\([^\)]*\)/g, "")) // 소괄호 연 문자로 시작 \( \) ~ 소괄호 닫은 문자를 제외한 문자 0~n개 [a문자 or b문자], 소괄호 닫는 문장 -> [^\)]* *은 여러개를 의미
-        cleanedMenu = cleanedMenu.replace(/\./g, "")
-    })
+            let cleanedMenu = menuRow.DDISH_NM
+            cleanedMenu = cleanedMenu.replace(/\([^\)]*\)/g, "") // 소괄호 연 문자로 시작 \( \) ~ 소괄호 닫은 문자를 제외한 문자 0~n개 [a문자 or b문자], 소괄호 닫는 문장 -> [^\)]* *은 여러개를 의미
+            cleanedMenu = cleanedMenu.replace(/\./g, "")
+            cleanedMenu = cleanedMenu.replace(/\*/g, "")
 
-    // 조식 -> breakfastMenuUl에 넣기
+            let cleanedMenuArray = cleanedMenu.split("<br/>")
+            cleanedMenuArray = cleanedMenuArray.map((a) => a.trim())
 
-    // 중식 -> breakfastMenuUl에 넣기
+            let menuFoodLis = ""
 
-    // 석식 -> breakfastMenuUl에 넣기   
-    
-}
+            cleanedMenuArray.forEach((menuFood) => {
+                menuFoodLis += `<li class = "menu-food">${menuFood}</li>\n`
+            })
+
+            // 조식 -> breakfastMenuUl에 넣기
+
+            // 중식 -> breakfastMenuUl에 넣기
+
+            // 석식 -> breakfastMenuUl에 넣기  
+            if (menuRow.MMEAL_SC_NM === "조식") breakfastMenuUl.innerHTML = menuFoodLis
+            else if (menuRow.MMEAL_SC_NM === "중식") lunchMenuUl.innerHTML = menuFoodLis
+            else if (menuRow.MMEAL_SC_NM === "석식") dinnerMenuUl.innerHTML = menuFoodLis
+
+            console.log(menuData)
+        })
+    }
 
 changeDate(0)
 
