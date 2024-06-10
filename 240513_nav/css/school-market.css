@@ -1,0 +1,40 @@
+#school-market {
+    margin-top: calc(var(--nav-height) + 100px);
+    display: flex;
+    flex-direction: column; /* search-container와 product-container를 수직 정렬 */
+    align-items: center; /* 교차축 가운데 정렬 */
+    row-gap: 40px;
+}
+
+.search-container {
+    font-size: var(--h2-font-size);
+    background-color: #dcdcdc;
+    padding: 10px 20px;
+    border-radius: 40px;
+    
+    min-width: 400px;
+    width: 90%;
+    max-width: 800px;
+
+    display: flex;
+    align-items: center;
+}
+
+.search-container > i {
+    margin-top: 5px;
+}
+
+#search-bar {
+    font-size: var(--h2-font-size);
+    border: none;
+    outline: none; /* focus 되었을 때 외곽선 삭제 */
+    background-color: transparent;
+    padding: 10px;
+    flex-grow: 1; /* 정해진 너비에 여유 공간이 있을 때 확장하자  */
+}
+
+@media screen and (max-width: 600px) {
+    #school-market {
+        margin-top: calc(var(--nav-height) + 40px);
+    }
+}
