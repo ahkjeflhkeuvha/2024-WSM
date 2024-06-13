@@ -28,7 +28,7 @@
     font-size: var(--h2-font-size);
     border: none;
     outline: none; /* focus 되었을 때 외곽선 삭제 */
-    background-color: transparent;
+    background-color: #dcdcdc;
     padding: 10px;
     flex-grow: 1; /* 정해진 너비에 여유 공간이 있을 때 확장하자  */
 }
