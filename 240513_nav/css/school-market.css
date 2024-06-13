@@ -33,8 +33,86 @@
     flex-grow: 1; /* 정해진 너비에 여유 공간이 있을 때 확장하자  */
 }
 
+.product-container {
+    display: flex;
+    padding: 0 100px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+
+    background-color: #ededed;
+    border-radius: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* x, y, blur, color*/
+    row-gap: 20px;
+    position: relative; /* absoulte의 중심은 relative인 곳으로 간다~~~ */
+
+}
+
+.product-item > img {
+    height: 250px;
+    aspect-ratio: 1/1; /* 앞은 너비, 뒤는 높이 -> 비율 */
+    object-fit: contain; /* 비율에 맞게 확대 넘치면 잘림, contain은 비율에 맞게 축소 */
+    border-radius: 20px;
+    background-color: white; /* object-fit이 contain이기 때문에 radius가 안 먹음 */
+}
+
+.product-item > .name {
+    background-color: #dcdcdc;
+    padding: 4px 30px;
+    border-radius: 20px;
+    position: absolute;
+    bottom: -15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    font-size: var(--h2-font-size);
+}
+
+@media screen and (max-width: 860px){
+    .product-container {
+        justify-content: center; /* 세로 한줄일 때, 왼쪽으로 치우치는 것 가운데로 정렬 */
+    }
+}
+
 @media screen and (max-width: 600px) {
     #school-market {
         margin-top: calc(var(--nav-height) + 40px);
+    }
+
+    .search-container {
+        font-size: var(--h3-font-size);
+        padding: 4px 16px;
+    }
+
+    #search-bar {
+        font-size: var(--h3-font-size);
+    }
+
+    .search-container i {
+        font-size: var(--h3-font-size);
+        margin-top: 5px;
+    }
+    
+    .product-item {
+        padding: 20px;
+        border-radius: 30px;
+    }
+
+    .product-item .name{
+        font-size: var(--h3-font-size);
+        border-radius: 17px;
+        bottom: -17px;
+    }
+
+    .product-item img {
+        height: 150px;
+        aspect-ratio: 2/ 1;
+
     }
 }

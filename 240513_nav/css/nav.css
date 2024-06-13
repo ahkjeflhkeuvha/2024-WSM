@@ -39,6 +39,8 @@ body > header {
     top: 0;
     right: 0;
     left: 0;
+    z-index: var(--z-index);
+    /* position 적용 시 가려지지 않는 현상 해결 */
 }
 
 nav {
