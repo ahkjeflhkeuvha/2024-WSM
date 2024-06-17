@@ -39,7 +39,7 @@
     width: 100%;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 40px;
+    row-gap: 100px;
 }
 
 .product-item {
@@ -114,5 +114,9 @@
         height: 150px;
         aspect-ratio: 2/ 1;
 
+    }
+
+    .nav-logo {
+        margin-top: 6px;
     }
 }
