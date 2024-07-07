@@ -26,7 +26,6 @@ function toggleMenu(){
         toggleI.classList.toggle('bi-list')
         toggleI.classList.toggle('bi-x-lg')
         // toggleI.classList.toggle('bi-x-lg')
-
     }
 }
 toggleMenu()
