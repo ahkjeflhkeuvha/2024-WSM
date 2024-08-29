@@ -1,0 +1,32 @@
+.container {
+    display: grid;
+    width: 800px;
+    height: 600px;
+    grid-template-columns: 30% 70%; /* 2fr 3fr, repeat()도 가능*/
+    grid-template-rows: 2fr 3fr;
+}
+
+.item {
+    border: 1px solid black;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    display: grid;
+    place-items: center;
+}
+
+.item:first-child {
+    background-color: rgb(255, 204, 212);
+}
+
+.item:nth-child(2) {
+    background-color: rgb(141, 223, 255);
+}
+
+.item:nth-child(3) {
+    background-color: rgb(255, 160, 82);
+}
+
+.item:last-child {
+    background-color: white;
+}

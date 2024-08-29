@@ -63,6 +63,7 @@ const setSchoolFoodMenu = (data) => {
     dinnerMenuUl.innerHTML = "<li> 급식 메뉴를 불러오지 못 했습니다.</li>"
 
 
+    console.log(data)
     if (data["mealServiceDietInfo"] === undefined) return
     const menuData = data["mealServiceDietInfo"][1]["row"]
     // data에서 메뉴를 가져오자(조, 중, 석식)
