@@ -1,0 +1,75 @@
+* {
+    font-family: '기아';
+}
+
+.container {
+    width: 800px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 50px repeat(5, 1fr);
+}
+
+.item {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+
+    display: grid;
+    place-items: center;
+    border: 1px solid black;
+    color: olivedrab;
+    font-weight: bold;
+}
+
+.first-row {
+    background-color: rgb(255, 188, 63);
+}
+
+.time {
+    background-color: rgb(255, 255, 155);
+}
+
+.wsm {
+    /* grid-row-start: 6;
+    grid-row-end: 8;
+    grid-column-start: 2;
+    grid-column-end: 3; */
+
+    grid-area: 6/2/8/3;
+     
+}
+
+.python {
+    grid-row-start: 4;
+    grid-row-end: 6;
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+.cd {
+    grid-row-start: span 2;
+}
+
+.java {
+    grid-area: 2/6/4/7;
+}
+
+.ds {
+    grid-area: 6/3/8/4;
+}
+
+.choice {
+    grid-row-start: span 2;
+}
+
+.thu-mon {
+    grid-row-start: span 2;
+}
+
+.cc {
+    grid-row-start: span 2;
+}
+
+.ab {
+    grid-row-start: span 2;
+}
