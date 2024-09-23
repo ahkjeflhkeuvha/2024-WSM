@@ -1,5 +1,6 @@
 const calendarHeader = document.getElementById('calendar-header')
 const calendarTitle = calendarHeader.getElementsByTagName('h1')[0]
+// const calendarTitle = document.querySelector('#calendar-header h1')
 
 // addEventListener는 (이벤트, 리턴 값) -> 호출하면 안 되고 리턴 값이 있어야 하기 때문에 arrow function 사용
 const prevMonthButton = document.getElementById('prev-month')
