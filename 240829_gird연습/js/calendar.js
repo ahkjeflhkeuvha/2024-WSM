@@ -63,7 +63,7 @@ const setCalendar = (date) => {
     const prevMonthLastDateDate = prevMonthLastDate.getDate()
     const firstDay = new Date(year, month, 1).getDay()
 
-    for (let date = prevMonthLastDateDate - firstDay + 1; date < prevMonthLastDateDate; date++) {
+    for (let date = prevMonthLastDateDate - firstDay + 1; date <= prevMonthLastDateDate; date++) {
         let currentMonthDateDiv = document.createElement("div")
         currentMonthDateDiv.className = "item other-month"
         currentMonthDateDiv.textContent = date
