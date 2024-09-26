@@ -2,6 +2,8 @@ const calendarHeader = document.getElementById('calendar-header')
 const calendarTitle = calendarHeader.getElementsByTagName('h1')[0]
 // const calendarTitle = document.querySelector('#calendar-header h1')
 
+const calendarContainer = document.querySelector('#calendar-container')
+
 // addEventListener는 (이벤트, 리턴 값) -> 호출하면 안 되고 리턴 값이 있어야 하기 때문에 arrow function 사용
 const prevMonthButton = document.getElementById('prev-month')
 prevMonthButton.addEventListener('click', () => changeMonth(-1))
@@ -24,5 +26,54 @@ const changeMonth = (diff) => {
 
     calendarTitle.innerText = `${year}년 ${month + 1}월`
 }
+
+const setCalendar = (date) => {
+        // 이번 달 마지막 날짜 -> 다음 달 1일의 전날 => 년, 월, 월 + 1, -1
+        const year = date.getFullYear()
+        const month = date.getMonth()
+        const lastDate = new Date(year, month + 1, 0)
+        const lastDateDate = lastDate.getDate()
+    /* let weekName = `<div class="item week-name">일</div>
+    <div class="item week-name">월</div>
+    <div class="item week-name">화</div>
+    <div class="item week-name">수</div>
+    <div class="item week-name">목</div>
+    <div class="item week-name">금</d/iv>
+    <div class="item week-name">토</div>`
+    calendarContainer.innerHTML = weekName */
+
+    const weekNames = "일월화수목금토"
+    const weekNamesArray = weekNames.split("")
+    let weekNameString = ""
+
+    weekNamesArray.forEach((val) => {
+        weekNameString += `<div class=item week-name">${val}</div>\n`
+    })
+
+    calendarContainer.innerHTML = weekNameString
+
+    // 이전 달의 뒷날짜 표시
+
+    // 이번 달의 모든 날짜 표시
+
+    for (let date = 1; date <= lastDateDate; date++) {
+        /// <div></div>
+        let currentMonthDateDiv = document.createElement("div")
+        
+        // <div class="item"></div>
+        currentMonthDateDiv.className = "item"
+
+        // <div class="item">날짜</div>
+        currentMonthDateDiv.textContent = date;
+
+        // <div id="calendar-container"><div class="item">날짜</div></div>
+        calendarContainer.appendChild(currentMonthDateDiv)
+    }
+
+    // 다음 달의 앞날짜 표시
+    
+}
+
+setCalendar(currentDate)
 
 changeMonth(0)
