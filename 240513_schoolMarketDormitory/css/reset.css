@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* 크기의 기준을 content에서 border로 바꾸자~~ */
+}
+
+ul, ol {
+    list-style: none;
+    /* list의 스타일을 없애자 (들여쓰기, 글머리표 삭제) */
+}
+
+a {
+    text-decoration: none;
+    /* link의 파란 밑줄 스타일 없애자 */
+}
+
+img {
+    max-width: 100%;
+}
+
