@@ -1,6 +1,26 @@
 main {
     margin-top: calc(var(--nav-height) + 100px);
+    /* font-size: var(--h2-font-size); */
+}
+
+#dormitory {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#dormitory > h1 {
+    font-size: var(--h1-font-size);
+    text-align: center;
+}
+
+#dormitory #selection-container {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
     font-size: var(--h2-font-size);
+    background-color: #a0d49c;
+    width: 330px;
 }
 
 #calendar-header {
@@ -11,7 +31,9 @@ main {
 }
 
 #calendar-container {
-    width: 600px;
+    /* width: 100%;
+    max-width: 600px; */
+    width: min(100%, 600px);
     height: 400px;
     margin: 0 auto;
     display: grid;
