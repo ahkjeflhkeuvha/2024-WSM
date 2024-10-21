@@ -100,3 +100,11 @@ const setCalendar = (date) => {
 setCalendar(currentDate)
 
 changeMonth(0)
+
+
+const checkDone = document.querySelector('#board .btn')
+console.log(checkDone)
+
+checkDone.addEventListener('click', () => {
+    alert("예약완료")
+})
