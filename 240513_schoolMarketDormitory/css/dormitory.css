@@ -95,7 +95,7 @@ main {
     justify-content: center;
 }
 
-#dormitory select {
+#dormitory select, #dormitory input {
     font-size: var(--h2-font-size);
     border: none;
     border-radius: 20px;
@@ -107,3 +107,8 @@ main {
     font-size: var(--h2-font-size);
     float: right;
 }
+
+#selection-washingmachine-time {
+    display: none;
+}
+
