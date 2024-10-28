@@ -88,6 +88,7 @@ const setCalendar = (date) => {
 
     // 다음 달의 앞날짜 표시
 
+
     for(let date = 1; date <= (6 - lastDay); date++){
         let currentMonthDateDiv = document.createElement("div")
         currentMonthDateDiv.className = "item other-month"
@@ -99,11 +100,3 @@ const setCalendar = (date) => {
 setCalendar(currentDate)
 
 changeMonth(0)
-
-
-const checkDone = document.querySelector('#board .btn')
-console.log(checkDone)
-
-checkDone.addEventListener('click', () => {
-    alert("예약완료")
-})
