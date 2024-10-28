@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>schoolMarket</title>
     <link rel="stylesheet" href="css/reset.css">
@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/school-market.css">
     <link rel="stylesheet" href="css/dormitory.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c5515939652b52fb707bf9fa410e7b6"></script>
     
 </head>
 <body>
@@ -37,9 +38,9 @@
         <h1>세탁기 예약하기</h1>
 
         <div id="selection-container">
-            <div class="selection-item" onclick="setPage(2)">요일 지정</div>
-            <div class="selection-item" onclick="setPage(3)">시간 선택</div>
-            <div class="selection-item" onclick="setPage(4)">호실 이름</div>                
+            <div class="selection-item" onclick="setPage(1)">요일 지정</div>
+            <div class="selection-item" onclick="setPage(2)">시간 선택</div>
+            <div class="selection-item" onclick="setPage(3)">호실 이름</div>                
         </div>
 
 
@@ -184,8 +185,19 @@
         </div>
     </main> 
 
+    <div id="map" style="width:500px;height:400px;"></div>
+
     <script src="js/nav.js"></script>
     <script src="js/calendar.js"></script>
     <script src="js/dormitory.js"></script>
+
+    <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = { 
+            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
+    </script>
 </body>
 </html>
