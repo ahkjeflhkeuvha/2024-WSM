@@ -4,10 +4,10 @@ const calendarDiv = document.getElementById("calendar");
 const selectionWashingMachineTimeDiv = document.getElementById("selection-washingmachine-time");
 const selectionRoomNameTimeDiv = document.querySelector("#selection-room-name");
 const boardDiv = document.querySelector("#board");
-const selectionItemDivs = document.getElementsByClassName('selection-item')
-console.log(selectionItemDivs);
 
 const pageDivs = [calendarDiv, selectionWashingMachineTimeDiv, selectionRoomNameTimeDiv, boardDiv]
+const selectionItemDivs = document.getElementsByClassName('selection-item')
+console.log(selectionItemDivs);
 
 // calendarDiv.style.display = "block";
 // selectionWashingMachineTimeDiv.style.display = "block";
@@ -24,7 +24,10 @@ const setPage = (page) => {
     }
 
     // real select
-    selectionItemDivs[page-1].classList.add("select")
+    if(selectionItemDivs.length >= page) { // 4페이지 selection은 없어서 undefined 에러 해결하기 위해서
+        selectionItemDivs[page-1].classList.add("select")
+    }
+    
 
     pageDivs.forEach(pageDiv => {
         pageDiv.style.display = "none";
