@@ -70,43 +70,8 @@ const setPage = (page) => {
     pageDivs[page - 1].style.display = "block";
 
     if (page === 2) {    //세탁기 ,, 시간
-        // 1,2,3 세탁기 / 1,2,3 시간 초기화
-        let allWashingmachineTime = {"1": ["1", "2", "3"], "2": ["1", "2", "3"], "3": ["1", "2", "3"]};
-        // 클릭한 날짜의 요일 구하기
-        // 예약된 시간을 확인하고, 세탁기가 있으면 초기화에서 제외
-        // 사용자가 예약한 예약을 보고 예약된 세탁기, 시간이 있으면 초기화 항목에서 제외
-        // 초기화 항목에서 예약된 시간 뺀 후, 모든 시간이 없는 세탁기 제외
-        // 세탁기 select에 option 만들기
-       
-        
-        let washingmachines = Object.keys(allWashingmachineTime);   //key만 가져옴
-        // console.log(washingmachines) // 가져온 key들
-        washingmachineSelect.innerHTML = ""
-        washingmachines.forEach(washingmachine => {
-            let newOption = document.createElement("option");   //<option></>
-            newOption.value = washingmachine;   //<option value="세탁기번호"></>
-            newOption.textContent = `${washingmachine}번 세탁기`;    //<option value="세탁기번호">세탁기번호 세탁기</>
-            washingmachineSelect.appendChild(newOption);    //washingmachineSelect에 자식으로 넣자
-        });
-        // 시간 select에 option 만들기
 
-        const setTimeSelect = (event) => {
-            timeSelect.innerHTML = ""
-            console.log(event)
-            const selectedWashingmachine = washingmachineSelect.value; // <option></option>
-            let times = allWashingmachineTime[selectedWashingmachine] // 만약 2번키라면 2번 세탁기의 값들을 가져옴
-            console.log(times)
-            times.forEach((time) => {
-                let newOption = document.createElement("option")
-                newOption.value = time // 시간 값 <option value="(시간값)1, 2, 3 중 하나"></option>
-                newOption.textContent = allData["time"][time] // 시간 값 <option value="(시간값)1, 2, 3 중 하나">진짜 시간</option>
-                // time : "1" -> "7시 ~ 8시 10분"으로 바꾸는 작업 필요
-                timeSelect.appendChild(newOption)
-            })
-        }   
-        setTimeSelect()
-        // 세탁기 번호 바뀌면, setTimeSelect 호출하자
-        washingmachineSelect.onchange = (event) => setTimeSelect(event);
+        initWashingmachine();
         // [다음] 클릭 => 세탁기 번호, 시간 번호 보관 => setPage(3)
     } else if (page === 3) {    //호실, 이름
 
@@ -133,3 +98,50 @@ const clickDate = (event) => {
 
 initData();
 setPage(1);
+
+const initWashingmachine = () => {
+    // 1,2,3 세탁기 / 1,2,3 시간 초기화
+
+    let allWashingmachineTime = {};
+    // 초기 세팅하자 
+
+    allData.washingmachine.forEach((washingmachine) => {
+        allWashingmachineTime[washingmachine] = Object.keys(allData.time)
+    })
+    console.log(allWashingmachineTime)
+    // let allWashingmachineTime = {"1": ["1", "2", "3"], "2": ["1", "2", "3"], "3": ["1", "2", "3"]};
+    // 클릭한 날짜의 요일 구하기
+    // 예약된 시간을 확인하고, 세탁기가 있으면 초기화에서 제외
+    // 사용자가 예약한 예약을 보고 예약된 세탁기, 시간이 있으면 초기화 항목에서 제외
+    // 초기화 항목에서 예약된 시간 뺀 후, 모든 시간이 없는 세탁기 제외
+    // 세탁기 select에 option 만들기
+    let washingmachines = Object.keys(allWashingmachineTime); //key만 가져옴
+
+    // console.log(washingmachines) // 가져온 key들
+    washingmachineSelect.innerHTML = "";
+    washingmachines.forEach(washingmachine => {
+        let newOption = document.createElement("option"); //<option></>
+        newOption.value = washingmachine; //<option value="세탁기번호"></>
+        newOption.textContent = `${washingmachine}번 세탁기`; //<option value="세탁기번호">세탁기번호 세탁기</>
+        washingmachineSelect.appendChild(newOption); //washingmachineSelect에 자식으로 넣자
+    });
+    // 시간 select에 option 만들기
+    const setTimeSelect = (event) => {
+        timeSelect.innerHTML = "";
+        console.log(event);
+        const selectedWashingmachine = washingmachineSelect.value; // <option></option>
+        let times = allWashingmachineTime[selectedWashingmachine]; // 만약 2번키라면 2번 세탁기의 값들을 가져옴
+        console.log(times);
+        times.forEach((time) => {
+            let newOption = document.createElement("option");
+            newOption.value = time; // 시간 값 <option value="(시간값)1, 2, 3 중 하나"></option>
+            newOption.textContent = allData["time"][time]; // 시간 값 <option value="(시간값)1, 2, 3 중 하나">진짜 시간</option>
+
+            // time : "1" -> "7시 ~ 8시 10분"으로 바꾸는 작업 필요
+            timeSelect.appendChild(newOption);
+        });
+    };
+    setTimeSelect();
+    // 세탁기 번호 바뀌면, setTimeSelect 호출하자
+    washingmachineSelect.onchange = (event) => setTimeSelect(event);
+}
