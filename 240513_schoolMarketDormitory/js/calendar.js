@@ -26,7 +26,7 @@ const changeMonth = (diff) => {
     // 월 구하기
     const month = currentDate.getMonth();
     // 제목 바꾸기
-    console.log(`${year}년 ${month + 1}월`);
+    // console.log(`${year}년 ${month + 1}월`);
     // js 변수에 innerHTML = `${year}년 ${month + 1}월`
     calendarHeaderH1.innerHTML = `<i>${year}년 ${month + 1}월</i>`;
     // 달력 새로 그리자
@@ -107,8 +107,8 @@ const setCalendar = (date) => {
 changeMonth(0); // 현재 달 출력
 setCalendar(currentDate);   // 현재 달의 달력 보여주기
 
-const btns = document.getElementsByClassName("btn");
-for (let btn of btns) {
-    // 버튼 누르면 예약완료 창 뜨도록 도와주는 js
-    btn.onclick = () => alert('예약 완료');
-}
+// const btns = document.getElementsByClassName("btn");
+// for (let btn of btns) {
+//     // 버튼 누르면 예약완료 창 뜨도록 도와주는 js
+//     btn.onclick = () => alert('예약 완료');
+// }
