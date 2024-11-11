@@ -92,7 +92,9 @@ const clickDate = (event) => {
         "name": undefined,
         "notification": true,
     }
-    newReservation.date = event.target.dataset.date;  //클릭한 날짜 정보 새 예약에 기록하기
+    // event.target.dataset.date
+    let dateString = event.target.dataset.date
+    newReservation.date = new Date(dateString);  //클릭한 날짜 정보 새 예약에 기록하기
     setPage(2);
 }
 
@@ -109,6 +111,12 @@ const initWashingmachine = () => {
         allWashingmachineTime[washingmachine] = Object.keys(allData.time)
     })
     console.log(allWashingmachineTime)
+    console.log(newReservation.date.getDay())
+    weeklyReservations.forEach((weekDay) => {
+        if(weekDay.weekday === newReservation.date.getDay()){
+            console.log(weekDay)
+        }
+    })
     // let allWashingmachineTime = {"1": ["1", "2", "3"], "2": ["1", "2", "3"], "3": ["1", "2", "3"]};
     // 클릭한 날짜의 요일 구하기
     // 예약된 시간을 확인하고, 세탁기가 있으면 초기화에서 제외
@@ -128,7 +136,6 @@ const initWashingmachine = () => {
     // 시간 select에 option 만들기
     const setTimeSelect = (event) => {
         timeSelect.innerHTML = "";
-        console.log(event);
         const selectedWashingmachine = washingmachineSelect.value; // <option></option>
         let times = allWashingmachineTime[selectedWashingmachine]; // 만약 2번키라면 2번 세탁기의 값들을 가져옴
         console.log(times);
