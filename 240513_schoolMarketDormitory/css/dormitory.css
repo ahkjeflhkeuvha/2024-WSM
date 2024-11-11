@@ -1,6 +1,6 @@
 main {
-    margin: 0 auto;                                 /* 1. 가운데 정렬 */
-    margin-top: calc(var(--nav-height) + 40px);    /* 2. 위에 부분 띄어 */
+    margin: 0 auto; /* 1. 가운데로 먼저 맞추고, */
+    margin-top: calc(var(--nav-height) + 40px);    /* 2. 위에서 띄우자 */
     /* font-size: var(--h2-font-size); */
 }
 
@@ -8,8 +8,7 @@ main {
     display: flex;
     flex-direction: column;
     /* align-items: center; */
-    width: min(100%, 600px); /* 브라우저 너비가 600px 초과면 600px, 미만이면 너비 100% */
-
+    width: min(100%, 600px);    /* 브라우저 너비가 600px 초과면, 600px, 미만이면 작게....아니 그냥 width: 100%; max-width: 600px; 합친거임. */
 }
 
 #dormitory > h1 {
@@ -19,28 +18,29 @@ main {
 }
 
 #dormitory #selection-container {
-    margin: 0 auto;
+    margin: 0 auto; /* 수평 가운데로 */
     margin-bottom: 80px;
+    font-size: var(--h2-font-size);
+    width: 380px;
+    padding: 5px 10px;
     display: flex;
     justify-content: center;
-    column-gap: 8px;
-    font-size: var(--h2-font-size);
+    column-gap: 10px;
     background-color: #a0d49c;
-    width: 360px;
-    padding: 10px 15px;
     border-radius: 40px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 25%);
 }
 
 .selection-item {
     padding: 5px 10px;
-    border-radius: 20px;
+    border-radius: 40px;
 }
 
 .selection-item:hover,
-.select{
+.select {
     background-color: white;
     cursor: pointer;
+    /* padding: 5px 10px; */
     box-shadow: 0 2px 2px rgba(0, 0, 0, 25%);
 }
 
@@ -48,18 +48,17 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    column-gap: 40px;
+    column-gap: 30px;
 }
 
 #calendar-container {
-    width: 100%;
-    max-width: 600px;
-    /* width: min(100%, 600px); */
+    /* width: 100%;
+    max-width: 600px; */
     height: 400px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #555;
     font-size: var(--h3-font-size);
 }
 
@@ -68,31 +67,34 @@ main {
     place-items: center;
 }
 
-.week-name {
-    font-weight: bold;
-    color: #aaa;
-    border-bottom: 1px solid black;
-}
-
-.item:nth-child(7n+1) {
+.item:nth-child(7n + 1) {
     color: crimson;
 }
 
-.item:nth-child(7n+7) {
+.item:nth-child(7n + 7) {
     color: blue;
 }
 
-.other-month {
-    color: #ddd !important;
+.week-name {
+    font-weight: bold;
+    color: #aaa;
+    border-bottom: 1px solid #555;
 }
+
+.other-month {
+    color: #ddd !important; /* 우선순위를 역전 시킴 */
+}
+
 
 .flex-container {
     display: flex;
     justify-content: center;
+    column-gap: 20px;
 }
 
-#dormitory select, #dormitory input {
-    font-size: var(--h2-font-size);
+#dormitory select,
+#dormitory input {
+    font-size: var(--h3-font-size);
     border: none;
     border-radius: 20px;
     background-color: #f0f0f0;
@@ -101,30 +103,29 @@ main {
 
 .btn {
     font-size: var(--h2-font-size);
+    padding: 5px 20px;
+    margin-top: 20px;
     float: right;
 }
 
-#calendar, 
-#selection-washingmachine-time, 
+#selection-washingmachine-time,
 #selection-room-name,
+#calendar,
 #board {
     display: none;
+}
+
+.board-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 2fr 1fr 1fr;
+}
+
+#board .header {
+    background-color: bisque;
 }
 
 #board .item {
     color: black;
     border: 1px solid gray;
     height: 30px;
-}
-
-
-#board .header{
-    font-weight: bold;
-    background-color: bisque;
-}
-
-.board-container {
-    border: 1px solid black;
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr 1fr 1fr
-}
+}   
