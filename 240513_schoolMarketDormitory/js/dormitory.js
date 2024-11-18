@@ -8,6 +8,8 @@ const pageDivs = [calendarDiv, selectionWashingmachineTimeDiv, selectionRoomName
 
 const washingmachineSelect = document.getElementById("washingmachine");
 const timeSelect = document.getElementById("time");
+const roomSelect = document.querySelector('.selection-room > select')
+const nameInput = document.querySelector('.input-name > input')
 
 // 셀렉션 세개
 const selectionItemDivs = document.getElementsByClassName("selection-item");
@@ -76,9 +78,12 @@ const setPage = (page) => {
         initWashingmachine();
         // [다음] 클릭 => 세탁기 번호, 시간 번호 보관 => setPage(3)
     } else if (page === 3) {    //호실, 이름
-
+        newReservation.washingmachine = washingmachineSelect.value
+        newReservation.time = timeSelect.value
+        initRoomName()
     } else if (page === 4) {    //세탁기 예약 현황표
-
+        newReservation.room = roomSelect.value
+        newReservation.name = nameInput.value
     }
 }
 
@@ -99,9 +104,6 @@ const clickDate = (event) => {
     newReservation.date = new Date(dateString);  //클릭한 날짜 정보 새 예약에 기록하기
     setPage(2);
 }
-
-initData();
-setPage(1);
 
 const initWashingmachine = () => {
     // 1,2,3 세탁기 / 1,2,3 시간 초기화
@@ -168,3 +170,37 @@ const initWashingmachine = () => {
     // 세탁기 번호 바뀌면, setTimeSelect 호출하자
     washingmachineSelect.onchange = (event) => setTimeSelect(event);
 }
+
+
+const initRoomName = () => {
+    // 모든 호실 표시하지
+    let rooms = allData["room"]
+
+    // createElement -> select.append
+    roomSelect.innerHTML = ""
+    // rooms.forEach((room) => {
+    //     let roomOption = document.createElement('option')
+    //     roomOption.value = room
+    //     roomOption.textContent = room + "호"
+
+    //     roomSelect.appendChild(roomOption)
+    // })
+
+    // string -> select.append
+
+    // let roomString = ""
+    // rooms.forEach((room) => {
+    //     let roomOption = `<option value=${room}>${room + "호"}</option>`
+    //     roomString += roomOption
+    // })
+    // roomSelect.innerHTML = roomString
+
+    // map()
+    let roomOp = rooms.map((room) => `<option value="${room}">${room + "호"}</option>`).join("\n")
+    roomSelect.innerHTML = roomOp
+
+    nameInput.value = ""
+}
+
+initData();
+setPage(1);
