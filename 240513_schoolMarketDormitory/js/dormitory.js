@@ -21,6 +21,8 @@ let allData; //모든 초기화 정보 세탁기, 시간, 호실 정보
 let weeklyReservation; //미리 요일별로 예약된 정보
 let newReservation; //사용자가 입력하고 있는 예약 정보
 let reservations; //사용자가 예약 완료한 정보들
+let allWashingmachineTime;
+let weeklyReservations;
 
 const initData = async () => {
     // allData 가져오기
@@ -103,13 +105,32 @@ setPage(1);
 
 const initWashingmachine = () => {
     // 1,2,3 세탁기 / 1,2,3 시간 초기화
-
-    let allWashingmachineTime = {};
-    // 초기 세팅하자 
-
+    allWashingmachineTime = {};
     allData.washingmachine.forEach((washingmachine) => {
         allWashingmachineTime[washingmachine] = Object.keys(allData.time)
     })
+    
+    console.log(allWashingmachineTime)
+
+    let weekday = newReservation.date.getDay()
+
+    weeklyReservations.forEach((weeklyReservation) => {
+        if(weekday === weeklyReservation.weekday) {
+            // 초기화 한 데이터에서 weeklyReservation에 예약된 번호의 시간 번호를 빼자
+
+            const { washingmachine, time } = weeklyReservation
+            const index = allWashingmachineTime[washingmachine].indexOf(String(time))
+
+            if(index > -1) allWashingmachineTime[washingmachine].splice(index, 1)
+
+            console.log(washingmachine, time, index)
+
+        
+        }
+    })
+
+    // 초기 세팅하자 
+
     console.log(allWashingmachineTime)
     console.log(newReservation.date.getDay())
     weeklyReservations.forEach((weekDay) => {
@@ -124,6 +145,8 @@ const initWashingmachine = () => {
     // 초기화 항목에서 예약된 시간 뺀 후, 모든 시간이 없는 세탁기 제외
     // 세탁기 select에 option 만들기
     let washingmachines = Object.keys(allWashingmachineTime); //key만 가져옴
+
+
 
     // console.log(washingmachines) // 가져온 key들
     washingmachineSelect.innerHTML = "";
