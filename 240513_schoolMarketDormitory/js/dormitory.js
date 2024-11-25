@@ -73,8 +73,21 @@ const setPage = (page) => {
 
     // show pagas
     pageDivs[page - 1].style.display = "block";
-
-    if (page === 2) {    //세탁기 ,, 시간
+    if (page === 1) {
+        // reservations 요청해서 가져오자
+        let storedReservations = localStorage.getItem("reservations")
+        if (storedReservations) { // 저장된 reservations가 있을 때
+            reservations = JSON.parse(storedReservations) // reservations에서 꺼내서 .date에 있는 string -> date 객체
+            reservations.map((reservation) => {
+                console.log(reservation)
+                reservation.date = new Date(reservation.date)
+            })
+            console.log(reservations)
+        } else { // 저장된 reservations가 없을 때 
+            storedReservations = []
+        }
+    }
+    else if (page === 2) {    //세탁기 ,, 시간
 
         initWashingmachine();
         // [다음] 클릭 => 세탁기 번호, 시간 번호 보관 => setPage(3)
@@ -132,8 +145,6 @@ const initWashingmachine = () => {
             if(index > -1) allWashingmachineTime[washingmachine].splice(index, 1)
 
             console.log(washingmachine, time, index)
-
-        
         }
     })
 
@@ -141,6 +152,20 @@ const initWashingmachine = () => {
     // 클릭한 날짜의 요일 구하기
     // 예약된 시간을 확인하고, 세탁기가 있으면 초기화에서 제외
     // 사용자가 예약한 예약을 보고 예약된 세탁기, 시간이 있으면 초기화 항목에서 제외
+    reservations.forEach((reservation) => {
+        if (newReservation.date.getFullYear() == reservation.date.getFullYear()
+            && newReservation.date.getMonth() == reservation.date.getMonth()
+            && newReservation.date.getDate() == reservation.date.getDate()) {
+                const { washingmachine, time } = reservation    
+                
+                const index = allWashingmachineTime[washingmachine].indexOf(String(time))
+
+            if(index > -1) allWashingmachineTime[washingmachine].splice(index, 1)
+
+            console.log(washingmachine, time, index)
+            }
+    })
+
     // 초기화 항목에서 예약된 시간 뺀 후, 모든 시간이 없는 세탁기 제외
     // 세탁기 select에 option 만들기
     
@@ -221,12 +246,17 @@ const initTable = () => {
     reservations.forEach((reservation) => {
         tableString += `<div class="item">${reservation.name}</div>
         <div class="item board-item">${reservation.room + "호"}</div>
-        <div class="item board-item">${reservation.date.getFullYear() + "년 " + reservation.date.getMonth() + 1 + "월 " + reservation.date.getDate() + "일"}</div>
+        <div class="item board-item">${reservation.date.getFullYear() + "년 " + (reservation.date.getMonth() + 1) + "월 " + reservation.date.getDate() + "일"}</div>
         <div class="item board-item">${allData["time"][reservation.time]}</div>
         <div class="item board-item">${reservation.washingmachine + "번 세탁기"}</div>
         <div class="item board-item">${reservation.notification ? "🔔" : "✖️"}</div>`
     })
     boardContainer.innerHTML = tableString
+}
+
+const finishReservation = () => {
+    localStorage.setItem("reservations", JSON.stringify(reservations))
+    alert("예약 완료")
 }
 
 initData();
